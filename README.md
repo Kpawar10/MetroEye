@@ -3,7 +3,7 @@
 
 MetroEye is a real-time crowd monitoring system designed to estimate passenger occupancy in metro coaches using computer vision. The system leverages deep learning-based object detection to count individuals in dense environments and provides live insights through an interactive dashboard.
 
-🚀 Key Features
+🚀 Key Features 
 
 Real-time passenger counting from video streams
 
