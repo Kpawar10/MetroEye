@@ -10,23 +10,22 @@ st.write("Real-time crowd monitoring for Coach #03")
 # Create a placeholder for live updates
 placeholder = st.empty()
 
-while True:
+for _ in range(1000):
     try:
         # Read the data from the CSV file
         df = pd.read_csv('live_data.csv')
-        count = df['count'].iloc[0]
-        
+        latest = df.iloc[-1]   
+        count = latest['count']
+        status = latest['status']
+
         with placeholder.container():
             # Logic for Status
-            if count < 10:
-                st.success(f"### Status: SEATS AVAILABLE 🟢")
-                color = "green"
-            elif count < 25:
-                st.warning(f"### Status: STANDING ROOM ONLY 🟡")
-                color = "orange"
+            if status == "Low":
+                 st.success("### Status: SEAT AVAILABLE 🟢")
+            elif status == "Medium":
+                 st.warning("### Status: STANDING ROOM ONLY 🟡")
             else:
-                st.error(f"### Status: HEAVILY CROWDED 🔴")
-                color = "red"
+                st.error("### Status: HIGHLY CROWDED 🔴")
             
             # Big Metric Display
             st.metric(label="Current Passengers", value=count)
